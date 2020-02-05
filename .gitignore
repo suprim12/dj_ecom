@@ -4,6 +4,9 @@
 __pycache__/
 local_settings.py
 db.sqlite3
-media
+/media
+/static
 .vscode
 /venv
+/node_modules
+/djecom/static/scss
