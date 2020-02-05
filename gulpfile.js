@@ -8,6 +8,7 @@ const postcss = require('gulp-postcss');
 const cssnano = require('cssnano');
 const concat = require('gulp-concat');
 const lineec = require('gulp-line-ending-corrector');
+var livereload = require('gulp-livereload');
 const filespath = {
     scsspath: './djecom/static/scss/**/*.scss',
     jspath: './djecom/static/js/**/*.js'
@@ -39,8 +40,11 @@ function watch() {
     //         baseDir: 'http://127.0.0.1:3000/'
     //     }
     // });
+    livereload.listen();
     gulp.watch(filespath.scsspath, style);
     gulp.watch(JSRC, javascript);
+    gulp.watch('**/templates/**').on('change', livereload.changed);
+    gulp.watch(filespath.scsspath).on('change', livereload.changed);
     // gulp.watch(filespath.jspath).on('change', browserSync.reload);
     // gulp.watch('./*.html').on('change', browserSync.reload);
 }
